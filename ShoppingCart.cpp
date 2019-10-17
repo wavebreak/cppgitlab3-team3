@@ -48,12 +48,22 @@ void ShoppingCart::ModifyItem(ItemToPurchase item) {
 }
 
 int ShoppingCart::GetNumItemsInCart() {
-
+    int numItems  = 0;
+    for(int i = 0; i< cartItems.size(); i++) {
+        numItems += cartItems.at(i).GetQuantity();
+    }
+    return numItems;
 }
+
 
 double ShoppingCart::GetCostOfCart() {
+ double totalCost = 0.0;
+    for (int i = 0; i < cartItems.size(); ++i) {
+        totalCost += (cartItems.at(i).GetPrice() * cartItems.at(i).GetQuantity());
+    }
+    return totalCost;
 
-}
+    }
 
 void ShoppingCart::PrintTotal() {
     unsigned i;
