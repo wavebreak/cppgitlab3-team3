@@ -32,7 +32,19 @@ void ShoppingCart::RemoveItem(string name) {
 }
 
 void ShoppingCart::ModifyItem(ItemToPurchase item) {
+    for (int i = 0; i < cartItems.size(); i++) {
+        if (cartItems.at(i).GetName() == item.GetName()) {
 
+            cartItems.at(i).SetDescription(item.GetDescription());
+
+            cartItems.at(i).SetPrice(item.GetPrice());
+
+            cartItems.at(i).SetQuantity(item.GetQuantity());
+        }
+        else {
+            cout << "Item not found in cart. Nothing modified.";
+        }
+    }
 }
 
 int ShoppingCart::GetNumItemsInCart() {
