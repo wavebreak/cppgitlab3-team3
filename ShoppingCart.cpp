@@ -24,11 +24,20 @@ string ShoppingCart::GetDate() const {
 
 
 void ShoppingCart::AddItem(ItemToPurchase item) {
-
+    cartItems.pushback(item);
 }
 
-void ShoppingCart::RemoveItem(string name) {
-
+void ShoppingCart::RemoveItem(string itemName)
+{  
+    for (unsigned int i = 0; i < cartItems.size(); ++i) 
+    {
+        if (itemName.compare(cartItems.at(i).GetName()) == 0)
+          {
+            cartItems.erase(cartItems.begin() + i);
+            return;
+          }
+     }
+    cout << "Item not found in cart. Nothing removed.\n";
 }
 
 void ShoppingCart::ModifyItem(ItemToPurchase item) {
